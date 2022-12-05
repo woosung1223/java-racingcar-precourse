@@ -15,7 +15,7 @@ public class Car {
     }
 
     public void move() {
-        if (RandomNumGenerator.makeRandomDigit() > MOVE_POSSIBLE_VALUE) {
+        if (RandomNumGenerator.makeRandomDigit() >= MOVE_POSSIBLE_VALUE) {
             position++;
         }
     }
