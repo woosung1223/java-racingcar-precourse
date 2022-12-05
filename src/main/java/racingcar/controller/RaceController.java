@@ -1,14 +1,18 @@
 package racingcar.controller;
 
+import racingcar.domain.Car;
 import racingcar.domain.Race;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.List;
 
 public class RaceController {
     private final InputView inputView = new InputView();
-//    OutputView outputView = new OutputView();
+    private OutputView outputView = new OutputView();
     private Race race;
+
+    private final String GAME_RESULT_MESSAGE = "실행 결과";
 
     public void run() {
         initialize();
@@ -21,13 +25,14 @@ public class RaceController {
     }
 
     private void doRace() {
+        System.out.println(GAME_RESULT_MESSAGE);
         do {
-            List<Integer> oneRaceResult = race.getOneTryRaceResult();
-//            outputView.print(oneRaceResult);
+            List<Car> oneRaceResult = race.getOneTryRaceResult();
+            outputView.printOneRaceResult(oneRaceResult);
         } while (!race.isRaceOver());
     }
 
     private void makeRaceResult() {
-//        outputView.print(race.getWinner());
+        outputView.printFinalRaceResult(race.getWinner());
     }
 }

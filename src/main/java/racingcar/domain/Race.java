@@ -15,13 +15,11 @@ public class Race {
         this.raceTry = new Try(raceTry);
     }
 
-    public List<Integer> getOneTryRaceResult() {
+    public List<Car> getOneTryRaceResult() {
         cars.forEach(Car::move);
         raceTry.addTry();
 
-        return cars.stream()
-                .map(Car::getLocation)
-                .collect(Collectors.toList());
+        return cars;
     }
 
     public boolean isRaceOver() {

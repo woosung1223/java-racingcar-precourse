@@ -28,7 +28,7 @@ public class Car {
     public String toString() {
         return name;
     }
-    
+
     private void validate(String name) {
         checkSizeInRange(name);
         checkIsNotEmpty(name);
