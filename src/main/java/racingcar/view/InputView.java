@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.Car;
+import racingcar.domain.Try;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +17,7 @@ public class InputView {
         System.out.println(READ_CAR_MESSAGE);
 
         String line = Console.readLine();
-        // TODO: 검증 기능 추가
+        validateCar(line);
         return Arrays.asList(line.split(DELIMITER));
     }
 
@@ -23,7 +25,23 @@ public class InputView {
         System.out.println(READ_TRY_MESSAGE);
 
         String line = Console.readLine();
-        // TODO: 검증 기능 추가
+        validateTry(line);
         return Integer.parseInt(line);
+    }
+
+    private void validateCar(String line) {
+        try {
+            new Car(line);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void validateTry(String line) {
+        try {
+            new Try(Integer.parseInt(line));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
