@@ -20,6 +20,10 @@ public class Car {
         }
     }
 
+    public int getLocation() {
+        return position;
+    }
+
     private void validate(String name) {
         checkSizeInRange(name);
         checkIsNotEmpty(name);
