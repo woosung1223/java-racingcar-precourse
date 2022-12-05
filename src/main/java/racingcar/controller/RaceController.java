@@ -25,7 +25,7 @@ public class RaceController {
     private void doRace() {
         System.out.println(GAME_RESULT_MESSAGE);
         do {
-            RaceStatusDTO raceStatus = race.getRaceStatus();
+            RaceStatusDTO raceStatus = race.getStatus();
             outputView.printRaceStatus(raceStatus);
         } while (!race.isOver());
     }
