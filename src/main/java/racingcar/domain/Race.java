@@ -27,4 +27,9 @@ public class Race {
     public boolean isRaceOver() {
         return raceTry.cantTryAnymore();
     }
+
+    public List<Car> getWinner() {
+        Referee racingReferee = new Referee();
+        return racingReferee.getWinner(cars);
+    }
 }
