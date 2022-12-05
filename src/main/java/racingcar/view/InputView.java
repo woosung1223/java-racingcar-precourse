@@ -31,7 +31,8 @@ public class InputView {
 
     private void validateCar(String line) {
         try {
-            new Car(line);
+            Arrays.stream(line.split(DELIMITER))
+                    .map(Car::new);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
