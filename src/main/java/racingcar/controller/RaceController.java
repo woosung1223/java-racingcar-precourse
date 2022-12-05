@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.Race;
+import racingcar.domain.RaceStatusDTO;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -27,7 +28,7 @@ public class RaceController {
     private void doRace() {
         System.out.println(GAME_RESULT_MESSAGE);
         do {
-            List<Car> oneRaceResult = race.getOneTryRaceResult();
+            RaceStatusDTO oneRaceResult = race.getOneTryRaceResult();
             outputView.printOneRaceResult(oneRaceResult);
         } while (!race.isRaceOver());
     }

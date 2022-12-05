@@ -1,6 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.RaceStatusDTO;
 
 import java.util.List;
 import java.util.StringJoiner;
@@ -10,16 +11,17 @@ public class OutputView {
     private final String RESULT_DELIMITER = ", ";
     private final String LOCATION_EXPRESSION = "-";
 
-    public void printOneRaceResult(List<Car> cars) {
+    public void printOneRaceResult(RaceStatusDTO raceStatus) {
+        List<Car> cars = raceStatus.getCars();
         cars.forEach(car -> {
             System.out.println(car + RACE_DELIMITER + makeFormattedLocation(car.getLocation()));
         });
         addNewLine();
     }
 
-    public void printFinalRaceResult(List<Car> cars) {
+    public void printFinalRaceResult(RaceStatusDTO raceStatus) {
         System.out.print("최종 우승자 : ");
-
+        List<Car> cars = raceStatus.getCars();
         StringJoiner stringJoiner = new StringJoiner(RESULT_DELIMITER);
         cars.forEach(car -> stringJoiner.add(car.toString()));
         System.out.println(stringJoiner);

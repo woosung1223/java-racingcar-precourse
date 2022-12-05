@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private final List<Car> cars; // TODO: 일급 컬렉션 적용
+    private final List<Car> cars;
     private final Try raceTry;
 
     public Race(List<String> cars, int raceTry) {
@@ -15,19 +15,18 @@ public class Race {
         this.raceTry = new Try(raceTry);
     }
 
-    public List<Car> getOneTryRaceResult() {
+    public RaceStatusDTO getOneTryRaceResult() {
         cars.forEach(Car::move);
         raceTry.addTry();
-
-        return cars;
+        return new RaceStatusDTO(cars);
     }
 
     public boolean isRaceOver() {
         return raceTry.cantTryAnymore();
     }
 
-    public List<Car> getWinner() {
+    public RaceStatusDTO getWinner() {
         Referee racingReferee = new Referee();
-        return racingReferee.getWinner(cars);
+        return new RaceStatusDTO(racingReferee.getWinner(cars));
     }
 }
