@@ -17,9 +17,14 @@ public class Race {
 
     public List<Integer> getOneTryRaceResult() {
         cars.forEach(Car::move);
+        raceTry.addTry();
 
         return cars.stream()
                 .map(Car::getLocation)
                 .collect(Collectors.toList());
+    }
+
+    public boolean isRaceOver() {
+        return raceTry.cantTryAnymore();
     }
 }
