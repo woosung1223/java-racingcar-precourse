@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class RaceStatusDTO {
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public RaceStatusDTO(List<Car> cars) {
         this.cars = Collections.unmodifiableList(cars);
