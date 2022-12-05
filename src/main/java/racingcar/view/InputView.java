@@ -15,8 +15,15 @@ public class InputView {
         System.out.println(READ_CAR_MESSAGE);
 
         String line = Console.readLine();
-        List<String> splitCars = Arrays.asList(line.split(DELIMITER));
         // TODO: 검증 기능 추가
-        return splitCars;
+        return Arrays.asList(line.split(DELIMITER));
+    }
+
+    public int readTry() {
+        System.out.println(READ_TRY_MESSAGE);
+
+        String line = Console.readLine();
+        // TODO: 검증 기능 추가
+        return Integer.parseInt(line);
     }
 }
