@@ -11,7 +11,7 @@ public class OutputView {
     private final String RESULT_DELIMITER = ", ";
     private final String LOCATION_EXPRESSION = "-";
 
-    public void printOneRaceResult(RaceStatusDTO raceStatus) {
+    public void printRaceStatus(RaceStatusDTO raceStatus) {
         List<Car> cars = raceStatus.getCars();
         cars.forEach(car -> {
             System.out.println(car + RACE_DELIMITER + makeFormattedLocation(car.getLocation()));
@@ -19,7 +19,7 @@ public class OutputView {
         addNewLine();
     }
 
-    public void printFinalRaceResult(RaceStatusDTO raceStatus) {
+    public void printRaceResult(RaceStatusDTO raceStatus) {
         System.out.print("최종 우승자 : ");
         List<Car> cars = raceStatus.getCars();
         StringJoiner stringJoiner = new StringJoiner(RESULT_DELIMITER);

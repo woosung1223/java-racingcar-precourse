@@ -15,13 +15,13 @@ public class Race {
         this.raceTry = new Try(raceTry);
     }
 
-    public RaceStatusDTO getOneTryRaceResult() {
+    public RaceStatusDTO getRaceStatus() {
         cars.forEach(Car::move);
         raceTry.addTry();
         return new RaceStatusDTO(cars);
     }
 
-    public boolean isRaceOver() {
+    public boolean isOver() {
         return raceTry.cantTryAnymore();
     }
 
