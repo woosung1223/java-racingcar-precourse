@@ -5,6 +5,7 @@ import racingcar.domain.RaceStatusDTO;
 
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class OutputView {
     private final String RACE_DELIMITER = " : ";
@@ -22,9 +23,11 @@ public class OutputView {
     public void printRaceResult(RaceStatusDTO raceStatus) {
         System.out.print("최종 우승자 : ");
         List<Car> cars = raceStatus.getCars();
-        StringJoiner stringJoiner = new StringJoiner(RESULT_DELIMITER);
-        cars.forEach(car -> stringJoiner.add(car.toString()));
-        System.out.println(stringJoiner);
+        String res = cars.stream()
+                .map(Car::toString)
+                .collect(Collectors.joining(RESULT_DELIMITER));
+
+        System.out.println(res);
     }
 
     private String makeFormattedLocation(int location) {
