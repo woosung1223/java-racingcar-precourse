@@ -5,29 +5,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private final List<Car> cars; // TODO: 일급 컬렉션 지정
+    private final Cars cars;
     private final Try raceTry;
 
     private final String NAME_DUPLICATED = "[ERROR] 자동차 이름은 중복될 수 없습니다.";
 
     public Race(List<String> cars, int raceTry) {
         validate(cars);
-        this.cars = cars.stream()
+        this.cars = new Cars(cars.stream()
                 .map(Car::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
 
         this.raceTry = new Try(raceTry);
     }
 
     public RaceStatusDTO getStatus() {
-        cars.forEach(Car::move);
+        cars.move();
         raceTry.addTry();
-        return new RaceStatusDTO(cars);
+        return new RaceStatusDTO(cars.getCars());
     }
 
     public RaceStatusDTO getWinner() {
-        Referee racingReferee = new Referee();
-        return new RaceStatusDTO(racingReferee.getWinner(cars));
+        return new RaceStatusDTO(cars.getLeadingCar());
     }
 
     public boolean isOver() {
