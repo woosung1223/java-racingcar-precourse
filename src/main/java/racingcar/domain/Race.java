@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private final List<Car> cars;
+    private final List<Car> cars; // TODO: 일급 컬렉션 지정
     private final Try raceTry;
 
     private final String NAME_DUPLICATED = "[ERROR] 자동차 이름은 중복될 수 없습니다.";
