@@ -19,7 +19,7 @@ public class RaceController {
     }
 
     private void initialize() {
-        race = new Race(inputView.readCars(), inputView.readTry());
+        race = Race.of(inputView.readCars(), inputView.readTry());
     }
 
     private void doRace() {
