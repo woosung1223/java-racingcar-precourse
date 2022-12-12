@@ -1,22 +1,21 @@
 package racingcar.domain;
 
 public class Try {
-    private int count = 0;
-    private final int limit;
+    private int count;
 
     private final String TRY_IS_NOT_POSITIVE = "[ERROR] 시도 횟수는 한 번 이상이어야 합니다.";
 
-    public Try(int limit) {
-        validate(limit);
-        this.limit = limit;
+    public Try(int count) {
+        validate(count);
+        this.count = count;
     }
 
     public void addTry() {
-        count++;
+        count--;
     }
 
     public boolean cantTryAnymore() {
-        return count >= limit;
+        return count <= 0;
     }
 
     private void validate(int limit) {
