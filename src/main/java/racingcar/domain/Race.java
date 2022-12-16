@@ -8,32 +8,9 @@ public class Race {
     private final Cars cars;
     private final Try raceTry;
 
-    private final static String NAME_DUPLICATED = "[ERROR] 자동차 이름은 중복될 수 없습니다.";
-
-    public Race(Cars cars, int raceTry) {
+    public Race(Cars cars, Try raceTry) {
         this.cars = cars;
-        this.raceTry = new Try(raceTry);
-    }
-
-    public static Race of(List<String> participants, int raceTry) {
-        validate(participants);
-        Cars cars = new Cars(
-                participants.stream()
-                        .map(Car::new)
-                        .collect(Collectors.toList())
-        );
-        return new Race(cars, raceTry);
-    }
-
-    private static void validate(List<String> cars) {
-        checkIsDuplicated(cars);
-    }
-
-    private static void checkIsDuplicated(List<String> cars) {
-        HashSet<String> distinctCars = new HashSet<>(cars);
-        if (distinctCars.size() != cars.size()) {
-            throw new IllegalArgumentException(NAME_DUPLICATED);
-        }
+        this.raceTry = raceTry;
     }
 
     public RaceStatusDTO getStatus() {
